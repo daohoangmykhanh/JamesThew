@@ -3,17 +3,21 @@ module.exports = class post{
     id = 0;
     name = '';
     tagId = 1;
+    image = ''
     categoryId = 1;
     createdDate = '';
-    updateDate = '';
-    postContent = '';
-    constructor( name ="", tagId = 1, categoryId = 1, createdDate = '', updatedDate = '', postContent){
+    updatedDate = '';
+    content = '';
+    description ='';
+    constructor( name = '',image = '',description ='', content = '', tagId = 1, categoryId = 1, createdDate = '', updatedDate = ''){
         this.name = name;
         this.tagId = tagId;
         this.categoryId = categoryId;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
-        this.postContent = postContent;
+        this.content = content;
+        this.image = image;
+        this.description = description
     }
     get_id = () => { return this.id; }
     set_id = (val) => { this.id = val; }
@@ -27,7 +31,10 @@ module.exports = class post{
     set_createdDate = (val) => {this.createdDate = val}
     get_updatedDate = () => {return this.updatedDate}
     set_updatedDate = (val) => {this.updatedDate = val}
-    get_postContent = () => {return this.postContent}
-    set_postContent = (val) => {this.postContent = val}
-
+    get_content = () => {return this.content}
+    set_content = (val) => {this.content = val}
+    get_image = () => { return this.image; }
+    set_image = (val) => { this.image = val; }
+    get_description = () => { return this.description; }
+    set_description = (val) => { this.description = val; }
 }

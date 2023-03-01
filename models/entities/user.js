@@ -5,7 +5,7 @@ module.exports = class user{
     password = '';
     email = '';
     roleId = 2;
-    constructor( name ="", password = "", email = "", roleId = 2){
+    constructor( name ="", email = "", password = "", roleId = 2){
         this.name = name;
         this.password = password;
         this.email = email;

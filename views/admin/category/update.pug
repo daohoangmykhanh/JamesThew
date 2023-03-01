@@ -1,1 +1,17 @@
-h2 cate update
+extends layout
+
+block content
+    section.content-header
+      .container-fluid
+        .row.mb-1.ml-5
+          h1 Category 
+    .card.card-primary.m-5
+      .card-header
+        h3.card-title Edit a new category
+      form(action="/admin/category/update/" + data[0].categoryId + "" method="POST")
+        .card-body
+          .form-group
+            label(for='name') Category's name
+            input#name.form-control(type='text', value="" + data[0].categoryName + "", name='name')
+        .card-footer
+          button.btn.btn-primary(type='submit') Submit

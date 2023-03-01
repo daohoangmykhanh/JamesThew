@@ -1,1 +1,31 @@
-h2 user update
+extends layout
+
+block content 
+    section.content-header
+      .container-fluid
+        .row.mb-1.ml-5
+          h1 User 
+    .card.card-primary.m-5
+      .card-header
+        h3.card-title Update user
+      form(action="/admin/user/update/" + dataUser[0].userId + "" method='POST')
+        .card-body
+          .form-group
+            label(for='name') User's name
+            input#name.form-control(type='text',  value="" + dataUser[0].userName + "", name='name')
+          .form-group
+            label(for='email') Email address
+            input#email.form-control(type='email',  value="" + dataUser[0].userEmail + "", name='email')
+          .form-group
+            label(for='password') Password
+            input#password.form-control(type='password',  value="" + dataUser[0].userPassword + "", name='password')
+          .form-group
+            label Select Role
+              select.form-control.mt-2(name='roleId')
+                each item in dataRole
+                  if dataUser[0].roleId == item.roleId
+                    option(value=item.roleId, selected)=item.roleName
+                  else
+                    option(value=item.roleId)=item.roleName
+        .card-footer
+          button.btn.btn-primary(type='submit') Submit

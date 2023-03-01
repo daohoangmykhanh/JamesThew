@@ -56,3 +56,47 @@
 	font-size: 24px;
 	font-weight: 900;
 }
+
+footer .social li i{
+  color: #f48840;
+  margin-left: 17px; 
+}
+
+footer .about{
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: left;
+  text-transform: capitalize;
+  padding-right: 20px;
+}
+
+footer .link {
+  text-align: left;
+  font-size: 15px;
+}
+
+footer .link a{
+  color: #f48840;
+  margin-left: 15px;
+}
+
+footer .link i{
+  color: #f48840;
+}
+
+footer .link li{
+  margin-top: 10px;
+}
+
+footer h5{
+  text-align: left;
+}
+
+footer h2{
+  text-align: left;
+  color: #f48840;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 900;
+}
+

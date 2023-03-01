@@ -1,14 +1,14 @@
+
 module.exports = class DbConnect {
     constructor() {
     }
     getConnect() {
-        this.config = {
-            user: 'sa',
+        const config = {    
+            database: 'jamesthew',
+            host: 'localhost',        
+            user: 'root',
             password: '123456',
-            server: 'AUGSEC',
-            database: 'JamesThew',
-            port:1433
         };
-        return this.config;
+        return config;
     }
 };

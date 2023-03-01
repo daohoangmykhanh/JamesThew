@@ -1,1 +1,58 @@
-h2 cate index
+extends layout
+
+block content 
+    section.content-header
+        .container-fluid
+          .row.mb-1
+            .col-6
+              a.ml-5(style='width: 175px').btn.btn-primary(href='/admin/category/create') Create a new category
+            .col-6
+              a.ml-5(style='width: 175px').btn.btn-primary(href='/admin/tag/create') Create a new tag
+    .row
+      .col-6
+        .card.ml-5.mr-5.mt-2
+          .card-header
+            h3.card-title Category List
+          .card-body
+            table.table.table-bordered
+              thead
+                tr
+                  th(style='width: 50px') #
+                  th Name
+                  th(style='width: 75px') Edit
+                  th(style='width: 75px') Delete
+              tbody
+                each item in dataCate
+                  tr
+                    td=item.categoryId
+                    td=item.categoryName
+                    td
+                        span.badge.bg-warning 
+                          a(href="/admin/category/update/"+ item.categoryId+"") Edit
+                    td
+                        span.badge.bg-danger 
+                          a(href="/admin/category/delete/"+ item.categoryId+"") Delete
+      .col-6
+        .card.ml-5.mr-5.mt-2
+          .card-header
+            h3.card-title Tag List
+          .card-body
+            table.table.table-bordered
+              thead
+                tr
+                  th(style='width: 50px') #
+                  th Name
+                  th(style='width: 75px') Edit
+                  th(style='width: 75px') Delete
+              tbody
+                each item in dataTag
+                  tr
+                    td=item.tagId
+                    td=item.tagName
+                    td
+                        span.badge.bg-warning 
+                          a(href="/admin/tag/update/"+ item.tagId+"") Edit
+                    td
+                        span.badge.bg-danger 
+                          a(href="/admin/tag/delete/"+ item.tagId+"") Delete        
+    

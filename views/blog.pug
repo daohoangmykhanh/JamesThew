@@ -1,0 +1,90 @@
+extends layout
+
+block content
+    .heading-page.header-text
+      section.page-heading
+        .container
+          .row
+            .col-lg-12
+              .text-content
+                h4= `${title}`
+                h2 Our Recent Blog Entries
+    // Banner Ends Here
+    section.call-to-action
+      .container
+        .row
+          .col-lg-12
+            .main-content
+              .row
+                .col-lg-8
+                  span Stand Blog HTML5 Template
+                  h4 Creative HTML Template For Bloggers!
+                .col-lg-4
+                  .main-button
+                    a(href='https://templatemo.com/tm-551-stand-blog', target='_parent') Download Now!
+    section.blog-posts.grid-system
+      .container
+        .row
+          .col-lg-8
+            .all-blog-posts
+              each post in dataPost
+                .row
+                  .col-lg-12
+                    .blog-post
+                      .blog-thumb
+                        img(src='/uploads/'+post.postImage alt='' style='height:500px')
+                      .down-content
+                        span=post.tagName
+                        a(href="/blog/detail/"+ post.postId+"")
+                          h4=post.postName
+                        ul.post-info
+                          li
+                            a(href='#') Admin
+                          li
+                            a=post.createdDate.toString().slice(4,15)
+                          li
+                            a(href='#') 12 Comments
+                        p=post.postDescription 
+          .col-lg-4
+            .sidebar
+              .row
+                .col-lg-12
+                  .sidebar-item.search
+                    form#search_form(name='gs', method='GET', action='#')
+                      input.searchText(type='text', name='q', placeholder='type to search...', autocomplete='on')
+                .col-lg-12
+                  .sidebar-item.recent-posts
+                    .sidebar-heading
+                      h2 Recent Posts
+                    .content
+                      ul
+                        li
+                          a(href='post-details.html')
+                            h5 Vestibulum id turpis porttitor sapien facilisis scelerisque
+                            span May 31, 2020
+                        li
+                          a(href='post-details.html')
+                            h5 Suspendisse et metus nec libero ultrices varius eget in risus
+                            span May 28, 2020
+                        li
+                          a(href='post-details.html')
+                            h5 Swag hella echo park leggings, shaman cornhole ethical coloring
+                            span May 14, 2020
+                .col-lg-12
+                  .sidebar-item.categories
+                    .sidebar-heading
+                      h2 Categories
+                    .content
+                      ul
+                        each item in dataCate
+                          li
+                            a(href='/category/'+ item.categoryId)='- '+item.categoryName
+                .col-lg-12
+                  .sidebar-item.tags
+                    .sidebar-heading
+                      h2 Tag
+                    .content
+                      ul
+                        each item in dataTag
+                          li
+                            a(href='/tag/'+ item.tagId)=item.tagName

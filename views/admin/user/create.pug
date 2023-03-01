@@ -1,1 +1,28 @@
-h2 user create
+extends layout
+
+block content 
+    section.content-header
+      .container-fluid
+        .row.mb-1.ml-5
+          h1 User 
+    .card.card-primary.m-5
+      .card-header
+        h3.card-title Create a new user
+      form(action='/admin/user/create' method='POST')
+        .card-body
+          .form-group
+            label(for='name') User's name
+            input#name.form-control(type='text', placeholder='Enter name', name='name')
+          .form-group
+            label(for='email') Email address
+            input#email.form-control(type='email', placeholder='Enter email', name='email')
+          .form-group
+            label(for='password') Password
+            input#password.form-control(type='password', placeholder='Password', name='password')
+          .form-group
+            label Select Role
+              select.form-control.mt-2(name='roleId')
+                each item in data
+                  option(value=item.roleId)=item.roleName
+        .card-footer
+          button.btn.btn-primary(type='submit') Submit

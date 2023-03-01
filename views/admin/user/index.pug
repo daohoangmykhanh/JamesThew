@@ -1,1 +1,32 @@
-h2 user index
+extends layout
+
+block content 
+    section.content-header.ml-5
+        .container-fluid
+          .row.mb-1
+            a.btn.btn-primary(href='/admin/user/create') Create a new category
+    .card.ml-5.mr-5.mt-2
+      .card-header
+        h3.card-title User List
+      .card-body
+        table.table.table-bordered
+          thead
+            tr
+              th(style='width: 50px') #
+              th Name
+              th Email
+              th(style='width: 75px') Edit
+              th(style='width: 75px') Delete
+          tbody
+            each item in data
+              tr
+                td=item.userId
+                td=item.userName
+                td=item.userEmail
+                td
+                    span.badge.bg-warning 
+                      a(href="/admin/user/update/"+ item.userId+"") Edit
+                td
+                    span.badge.bg-danger 
+                      a(href="/admin/user/delete/"+ item.userId+"") Delete
+    

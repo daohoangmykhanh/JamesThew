@@ -1,1 +1,47 @@
-h2 post update
+extends layout
+
+block content 
+    section.content-header
+      .container-fluid
+        .row.mb-1.ml-5
+          h1 Post 
+    .card.card-primary.m-5
+      .card-header
+        h3.card-title Update post
+      form(action="/admin/post/update/" + dataPost[0].postId + "" method='POST' enctype="multipart/form-data")
+        .card-body
+          .form-group
+            label(for='name') Post's Title 
+            input#name.form-control(type='text',  value="" + dataPost[0].postName + "", name='name')
+          .form-group
+            label(for='image') Current Image
+              .row.mt-2.ml-1
+                img(src='/uploads/'+ dataPost[0].postImage alt='', style='width: 500px')
+          .form-group
+            label(for='image') Image
+            .input-group
+              input#image(type='file', name='image')
+          .form-group
+            label(for='description') Description
+            textarea#description.form-control(type='text', name='description')=dataPost[0].postDescription 
+          .form-group
+            label(for='content') Content
+            textarea#content.form-control(type='text', name='content')=dataPost[0].postContent 
+          .form-group
+            label Tag 
+              select.form-control.mt-2(name='tagId')
+                each item in dataTag
+                  if dataPost[0].tagId == item.tagId
+                    option(value=item.tagId, selected)=item.tagName
+                  else
+                    option(value=item.tagId)=item.tagName
+          .form-group
+            label Category
+              select.form-control.mt-2(name='categoryId')
+                each item in dataCate
+                  if dataPost[0].categoryId == item.categoryId
+                    option(value=item.categoryId, selected)=item.categoryName
+                  else
+                    option(value=item.categoryId)=item.categoryName
+        .card-footer
+          button.btn.btn-primary(type='submit') Submit

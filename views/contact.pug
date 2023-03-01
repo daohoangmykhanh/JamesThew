@@ -1,4 +1,65 @@
 extends layout
 
-block content 
+block content
+    .heading-page.header-text
+      section.page-heading
+        .container
+          .row
+            .col-lg-12
+              .text-content
+                h4 contact us
+                h2 let&rsquo;s stay in touch!
+    // Banner Ends Here
+    section.contact-us
+      .container
+        .row
+          .col-lg-12
+            .down-contact
+              .row.mb-5
+                .col-lg-12
+                  p We would love to hear from you! If you have any questions, comments, or suggestions, please feel free to reach out to us using the contact form below. We will do our best to respond to your message as soon as possible.
+              .row
+                .col-lg-8
+                  .sidebar-item.contact-form
+                    .sidebar-heading
+                      h2 Send us a message
+                    .content
+                      form#contact(action='', method='post')
+                        .row
+                          .col-md-6.col-sm-12
+                            fieldset
+                              input#name(name='name', type='text', placeholder='Your name', required='')
+                          .col-md-6.col-sm-12
+                            fieldset
+                              input#email(name='email', type='text', placeholder='Your email', required='')
+                          .col-md-12.col-sm-12
+                            fieldset
+                              input#subject(name='subject', type='text', placeholder='Subject')
+                          .col-lg-12
+                            fieldset
+                              textarea#message(name='message', rows='6', placeholder='Your Message', required='')
+                          .col-lg-12
+                            fieldset
+                              button#form-submit.main-button(type='submit') Send Message
+                .col-lg-4
+                  .sidebar-item.contact-information
+                    .sidebar-heading
+                      h2 contact information
+                    .content
+                      ul
+                        li
+                          h5 090-484-8080
+                          span PHONE NUMBER
+                        li
+                          h5 jamesthew.info@company.com
+                          span EMAIL ADDRESS
+                        li
+                          h5
+                            | 123 Aenean id posuere dui, 
+                            br
+                            | Praesent laoreet 10660
+                          span STREET ADDRESS
+          .col-lg-12
+            #map
+              iframe(src='https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed', width='100%', height='450px', frameborder='0', style='border:0', allowfullscreen='')
     

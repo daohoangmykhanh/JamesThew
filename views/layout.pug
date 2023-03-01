@@ -7,13 +7,22 @@ html
     link(rel='stylesheet', href='/stylesheets/fontawesome.css')
     link(rel='stylesheet', href='/stylesheets/templatemo-stand-blog.css')
     link(rel='stylesheet', href='/stylesheets/owl.css')
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css')
   body
  
   // Header
+.container.mb-2
+  .d-flex.col-12.justify-content-end
+    if (userName)
+      a.text-warning.font-weight-bold.mr-2(href='/login')="Welcome" + `${userName}`
+      a.text-warning.font-weight-bold(href='/logout') Logout
+    else
+      a.text-warning.font-weight-bold.mr-2(href='/login') Login 
+      a.text-warning.font-weight-bold(href='/register') Register
 header
   nav.navbar.navbar-expand-lg
     .container
-      a.navbar-brand(href='index.html')
+      a.navbar-brand(href='/')
         h2
           | JAMESTHEW BLOG
           em .
@@ -22,17 +31,20 @@ header
       #navbarResponsive.collapse.navbar-collapse
         ul.navbar-nav.ml-auto
           li.nav-item.active
-            a.nav-link(href='index.html')
+            a.nav-link(href='/')
               | Home
               span.sr-only (current)
           li.nav-item
-            a.nav-link(href='about.html') Recipes
+            a.nav-link(href='/recipes') Recipes
           li.nav-item
-            a.nav-link(href='blog.html') Blog
+            a.nav-link(href='/posts') Blog
           li.nav-item
-            a.nav-link(href='post-details.html') About
+            a.nav-link(href='/about') About
           li.nav-item
-            a.nav-link(href='contact.html') Contact
+            a.nav-link(href='/contact') Contact   
+          li.nav-item
+            a.nav-link
+            
 // Page Content
 // Banner Starts Here
 .main-banner.header-text
@@ -134,21 +146,44 @@ block content
 footer
   .container
     .row
-      .col-lg-12
-        ul.social-icons
+      .col-md-6.mr-4
+        a.navbar-brand(href='/')
+        h2
+          | JAMESTHEW BLOG
+          em .
+        p.about.mt-3 We are a team of passionate foodies who love to share our culinary adventures with the world. Follow us on social media to stay up-to-date with our latest recipes and foodie finds.
+      .link.col-md-3.ml-5
+        h5.text-light Quick Links
+        ul.mt-3
           li
-            a(href='#') Facebook
+            i.bi.bi-arrow-right-circle-fill
+            a(href='/') Home
           li
-            a(href='#') Twitter
+            i.bi.bi-arrow-right-circle-fill
+            a(href='/recipes') Recipes
           li
-            a(href='#') Behance
+            i.bi.bi-arrow-right-circle-fill
+            a(href='/posts') Blog
           li
-            a(href='#') Linkedin
+            i.bi.bi-arrow-right-circle-fill
+            a(href='/about') About Us
           li
-            a(href='#') Dribbble
-      .col-lg-12
-        .copyright-text
-          p Copyright 2020 Stand Blog Co.| Design  
+            i.bi.bi-arrow-right-circle-fill
+            a(href='/contact') Contact Us
+      .col-md-2.ml-2
+        h5.text-light Follow Us
+      
+        ul.social-links.social.mt-3
+          .row
+            li
+              a(href='#')
+                i.bi.bi-facebook
+            li
+              a(href='#')
+                i.bi.bi-twitter
+            li
+              a(href='#')
+                i.bi.bi-instagram
 // Bootstrap core JavaScript
 script(src='https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js' integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct' crossorigin='anonymous')

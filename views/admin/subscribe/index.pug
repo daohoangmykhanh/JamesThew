@@ -1,0 +1,31 @@
+extends layout
+
+block content 
+    section.content-header.ml-5
+        .container-fluid
+            .row.mb-1.ml-5
+            h1 Subscribe
+    .card.m-5
+      .card-header
+        h3.card-title Subscribe List
+      .card-body
+        table.table.table-bordered
+          thead
+            tr
+              th(style='width: 50px') #
+              th User's email
+              th Subscribe's name
+              th(style='width: 75px') Edit
+              th(style='width: 75px') Delete
+          tbody
+            tr
+              each item in data
+                td=item.subscribeId
+                td=item.userId
+                td=item.subscribeName
+                td
+                    span.badge.bg-warning Edit
+                td
+                    span.badge.bg-danger Delete
+            
+    

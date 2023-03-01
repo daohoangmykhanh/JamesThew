@@ -1,4 +1,42 @@
-h2 post index
-each item in data 
-    p=item.postName
-    p=item.postContent
+extends layout
+
+block content 
+    section.content-header.ml-5
+        .container-fluid
+            .row.mb-1
+              a.btn.btn-primary(href='/admin/post/create') Create a new post
+    .card.ml-5.mr-5.mt-2
+      .card-header
+        h3.card-title Post List
+      .card-body
+        table.table.table-bordered
+          thead
+            tr
+              th Name
+              th Image
+              th Description
+              th Content
+              th Tag 
+              th Category
+              th Created Date
+              th(style='width: 75px') Edit
+              th(style='width: 75px') Delete
+          tbody
+            each item in data
+              tr
+                td(style='width: 200px')=item.postName
+                td(style='width: 150px')
+                  img(src='/uploads/'+ item.postImage alt='', style='height: 250px')
+                td(style='width: 240px')=item.postDescription
+                td=item.postContent
+                td(style='width: 110px')=item.tagName
+                td(style='width: 110px')=item.categoryName
+                td(style='width: 120px')=item.createdDate.toString().slice(4,15)
+                td
+                    span.badge.bg-warning 
+                      a(href="/admin/post/update/"+ item.postId+"") Edit
+                td
+                    span.badge.bg-danger 
+                      a(href="/admin/post/delete/"+ item.postId+"") Delete
+            
+    

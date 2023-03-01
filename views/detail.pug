@@ -1,0 +1,169 @@
+extends layout
+
+block content
+    .heading-page.header-text
+      section.page-heading
+        .container
+          .row
+            .col-lg-12
+              .text-content
+                h4=dataPost[0].tagName
+                h2=dataPost[0].categoryName
+    // Banner Ends Here
+    section.call-to-action
+      .container
+        .row
+          .col-lg-12
+            .main-content
+              .row
+                .col-lg-8
+                  span Stand Blog HTML5 Template
+                  h4 Creative HTML Template For Bloggers!
+                .col-lg-4
+                  .main-button
+                    a(rel='nofollow', href='https://templatemo.com/tm-551-stand-blog', target='_parent') Download Now!
+    section.blog-posts.grid-system
+      .container
+        .row
+          .col-lg-8
+            .all-blog-posts
+              .row
+                .col-lg-12
+                  .blog-post
+                    .blog-thumb
+                      img(src='/uploads/'+dataPost[0].postImage alt='' style='height:600px')
+                    .down-content
+                      span=dataPost[0].tagName
+                      a(href='post-details.html')
+                        h4=dataPost[0].postName
+                      ul.post-info
+                        li
+                          a(href='#') James Thew
+                        li
+                          a=dataPost[0].createdDate.toString().slice(4,15)
+                        li
+                          a(href='#') 10 Comments
+                      p=dataPost[0].postDescription
+                      p=dataPost[0].postContent
+                      .post-options
+                        .row
+                          .col-6
+                            ul.post-tags
+                              li
+                                i.fa.fa-tags
+                              li
+                                a(href='#')=dataPost[0].categoryName
+                          .col-6
+                            ul.post-share
+                              li
+                                i.fa.fa-share-alt
+                              li
+                                a(href='#') Facebook
+                                | ,
+                              li
+                                a(href='#')  Twitter
+                .col-lg-12
+                  .sidebar-item.comments
+                    .sidebar-heading
+                      h2 4 comments
+                    .content
+                      ul
+                        li
+                          .author-thumb
+                            img(src='assets/images/comment-author-01.jpg', alt='')
+                          .right-content
+                            h4
+                              | Charles Kate
+                              span May 16, 2020
+                            p
+                              | Fusce ornare mollis eros. Duis et diam vitae justo fringilla condimentum eu quis leo. Vestibulum id turpis porttitor sapien facilisis scelerisque. Curabitur a nisl eu lacus convallis eleifend posuere id tellus.
+                        li.replied
+                          .author-thumb
+                            img(src='assets/images/comment-author-02.jpg', alt='')
+                          .right-content
+                            h4
+                              | Thirteen Man
+                              span May 20, 2020
+                            p
+                              | In porta urna sed venenatis sollicitudin. Praesent urna sem, pulvinar vel mattis eget.
+                        li
+                          .author-thumb
+                            img(src='assets/images/comment-author-03.jpg', alt='')
+                          .right-content
+                            h4
+                              | Belisimo Mama
+                              span May 16, 2020
+                            p
+                              | Nullam nec pharetra nibh. Cras tortor nulla, faucibus id tincidunt in, ultrices eget ligula. Sed vitae suscipit ligula. Vestibulum id turpis volutpat, lobortis turpis ac, molestie nibh.
+                        li.replied
+                          .author-thumb
+                            img(src='assets/images/comment-author-02.jpg', alt='')
+                          .right-content
+                            h4
+                              | Thirteen Man
+                              span May 22, 2020
+                            p
+                              | Mauris sit amet justo vulputate, cursus massa congue, vestibulum odio. Aenean elit nunc, gravida in erat sit amet, feugiat viverra leo.
+                .col-lg-12
+                  .sidebar-item.submit-comment
+                    .sidebar-heading
+                      h2 Your comment
+                    .content
+                      form#comment(action='#', method='post')
+                        .row
+                          .col-md-6.col-sm-12
+                            fieldset
+                              input#name(name='name', type='text', placeholder='Your name', required='')
+                          .col-md-6.col-sm-12
+                            fieldset
+                              input#email(name='email', type='text', placeholder='Your email', required='')
+                          .col-lg-12
+                            fieldset
+                              textarea#message(name='message', rows='6', placeholder='Type your comment', required='')
+                          .col-lg-12
+                            fieldset
+                              button#form-submit.main-button(type='submit') Submit
+          .col-lg-4
+            .sidebar
+              .row
+                .col-lg-12
+                  .sidebar-item.search
+                    form#search_form(name='gs', method='GET', action='#')
+                      input.searchText(type='text', name='q', placeholder='type to search...', autocomplete='on')
+                .col-lg-12
+                  .sidebar-item.recent-posts
+                    .sidebar-heading
+                      h2 Recent Posts
+                    .content
+                      ul
+                        li
+                          a(href='post-details.html')
+                            h5 Vestibulum id turpis porttitor sapien facilisis scelerisque
+                            span May 31, 2020
+                        li
+                          a(href='post-details.html')
+                            h5 Suspendisse et metus nec libero ultrices varius eget in risus
+                            span May 28, 2020
+                        li
+                          a(href='post-details.html')
+                            h5 Swag hella echo park leggings, shaman cornhole ethical coloring
+                            span May 14, 2020
+                .col-lg-12
+                  .sidebar-item.categories
+                    .sidebar-heading
+                      h2 Categories
+                    .content
+                      ul
+                        each item in dataCate
+                          li
+                            a(href='/category/'+ item.categoryId)='- '+item.categoryName
+                .col-lg-12
+                  .sidebar-item.tags
+                    .sidebar-heading
+                      h2 Tag
+                    .content
+                      ul
+                        each item in dataTag
+                          li
+                            a(href='/tag/'+ item.tagId)=item.tagName
+                          
