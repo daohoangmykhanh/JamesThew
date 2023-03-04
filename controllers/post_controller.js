@@ -24,16 +24,23 @@ module.exports = class post_controller {
         });
     }
     createPost(req,res,next){
+        var subscribe;
         let currentDate = new Date().toJSON().slice(0, 10);
+        if ( req.body.subscribe == 1){
+            subscribe = true;
+        }else {
+            subscribe = false;
+        }
         const ext_name = path.extname(req.files.image.name);
-        const image_name = Date.now() + ext_name;
+        image_name = Date.now() + ext_name;
         req.files.image.mv('public/uploads/' + image_name);
+     
         var dao = new PostDao();
-        var postItem = new post(req.body.name,image_name,req.body.description,req.body.content,req.body.tagId,req.body.categoryId, currentDate )
+        var postItem = new post(req.body.name,image_name,req.body.description,req.body.content,req.body.tagId,req.body.categoryId, subscribe, currentDate )
         dao.Create(postItem,(err) => {
             if (err) throw console.log(err)
         })
-        res.redirect('/admin/user/index')
+        res.redirect('/admin/post/index')
     }
 
     editPost(req,res,next){
@@ -54,31 +61,35 @@ module.exports = class post_controller {
         });
     }
     updatePost(req,res,next){
+        var subscribe;
+        var item;
+        if ( req.body.subscribe == 1){
+            subscribe = true;
+        }else {
+            subscribe = false;
+        }
         var id = req.params.id;
         let currentDate = new Date().toJSON().slice(0, 10);
         if (req.files.image.name){
             const ext_name = path.extname(req.files.image.name);
             const image_name = Date.now() + ext_name;
             req.files.image.mv('public/uploads/' + image_name);
-            var item = new post(req.body.name,image_name,req.body.description,req.body.content,req.body.tagId,req.body.categoryId,'', currentDate );
+            var item = new post(req.body.name,image_name,req.body.description,req.body.content,req.body.tagId,req.body.categoryId,subscribe,'', currentDate );
         } else {
-            var item = new post(req.body.name,req.files.image.name,req.body.description,req.body.content,req.body.tagId,req.body.categoryId,'', currentDate ); 
+            var item = new post(req.body.name,'',req.body.description,req.body.content,req.body.tagId,req.body.categoryId,subscribe,'', currentDate ); 
         }
         var dao = new PostDao();
         
         dao.Update(id,item,(err) => {
-            if (err){
-                console.log(err)
-            }else {
-                console.log('update successfully')
-            } 
-            res.redirect('/admin/post/index')
+            if (err) throw console.log(err)
+            console.log('update successfully')
         });
+        res.redirect('/admin/post/index')
     
     }
     deletePost(req,res, next){
         var id = req.params.id;
-        var dao = new UserDao();
+        var dao = new PostDao();
         dao.Delete(id, (err) => {
             if(err){
                 console.log(err)
@@ -88,5 +99,5 @@ module.exports = class post_controller {
         })
         res.redirect('/admin/post/index')
     }
-    
+
 }

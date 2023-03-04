@@ -38,7 +38,6 @@ module.exports = class user_controller {
     }
     updateUser(req,res,next){
         var id = req.params.id;
-        console.log(id)
         var dao = new UserDao();
         var item = new user(req.body.name,req.body.email,req.body.password,req.body.roleId);
         dao.Update(id,item,(err) => {

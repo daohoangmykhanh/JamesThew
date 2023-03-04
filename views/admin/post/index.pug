@@ -15,7 +15,6 @@ block content
               th Name
               th Image
               th Description
-              th Content
               th Tag 
               th Category
               th Created Date
@@ -28,7 +27,6 @@ block content
                 td(style='width: 150px')
                   img(src='/uploads/'+ item.postImage alt='', style='height: 250px')
                 td(style='width: 240px')=item.postDescription
-                td=item.postContent
                 td(style='width: 110px')=item.tagName
                 td(style='width: 110px')=item.categoryName
                 td(style='width: 120px')=item.createdDate.toString().slice(4,15)

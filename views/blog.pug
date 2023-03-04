@@ -17,11 +17,11 @@ block content
             .main-content
               .row
                 .col-lg-8
-                  span Stand Blog HTML5 Template
-                  h4 Creative HTML Template For Bloggers!
+                  span Subscribe
+                  h4 For more delicious recipes !!!
                 .col-lg-4
                   .main-button
-                    a(href='https://templatemo.com/tm-551-stand-blog', target='_parent') Download Now!
+                    a(href='/subscribe/'+session.userId, target='_parent') Subscribe now!
     section.blog-posts.grid-system
       .container
         .row
@@ -42,43 +42,39 @@ block content
                             a(href='#') Admin
                           li
                             a=post.createdDate.toString().slice(4,15)
-                          li
-                            a(href='#') 12 Comments
                         p=post.postDescription 
           .col-lg-4
             .sidebar
               .row
                 .col-lg-12
                   .sidebar-item.search
-                    form#search_form(name='gs', method='GET', action='#')
-                      input.searchText(type='text', name='q', placeholder='type to search...', autocomplete='on')
+                    form#search_form( method='POST' action='/search/')
+                    .row
+                      .col-10
+                        input.searchText(type='text' name='input' placeholder='type to search post' autocomplete='on')
+                      .col-2                          
+                        button.search-button(href='/subscribe/'+ session.userId target='_parent') 
+                          i.bi.bi-search 
                 .col-lg-12
                   .sidebar-item.recent-posts
                     .sidebar-heading
                       h2 Recent Posts
                     .content
                       ul
-                        li
-                          a(href='post-details.html')
-                            h5 Vestibulum id turpis porttitor sapien facilisis scelerisque
-                            span May 31, 2020
-                        li
-                          a(href='post-details.html')
-                            h5 Suspendisse et metus nec libero ultrices varius eget in risus
-                            span May 28, 2020
-                        li
-                          a(href='post-details.html')
-                            h5 Swag hella echo park leggings, shaman cornhole ethical coloring
-                            span May 14, 2020
+                        each item in dataAll
+                          li
+                            a(href='/blog/detail/' + item.postId)
+                              h5=item.postName
+                              span=item.createdDate.toString().slice(4,15)
                 .col-lg-12
-                  .sidebar-item.categories
+                  .sidebar-item.tags
                     .sidebar-heading
                       h2 Categories
                     .content
                       ul
                         each item in dataCate
                           li
-                            a(href='/category/'+ item.categoryId)='- '+item.categoryName
+                            a(href='/category/'+ item.categoryId)=item.categoryName
                 .col-lg-12
                   .sidebar-item.tags
                     .sidebar-heading

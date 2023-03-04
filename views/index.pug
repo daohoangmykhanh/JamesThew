@@ -1,6 +1,36 @@
 extends layout
 
 block content 
+  section.carousel.mt-5
+    .container
+      #carouselExampleCaptions.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#carouselExampleCaptions', data-slide-to='0')
+        li(data-target='#carouselExampleCaptions', data-slide-to='1')
+        li(data-target='#carouselExampleCaptions', data-slide-to='2')
+      .carousel-inner
+        .carousel-item.active
+          img.d-block.w-100(src='/uploads/' + top[0].postImage, alt='...')
+          .carousel-caption.d-none.d-md-block
+            a(href="/blog/detail/"+ top[0].postId+"")
+              h5=top[0].postName
+            p=top[0].postDescription
+        .carousel-item
+          img.d-block.w-100(src='/uploads/' + top[1].postImage, alt='...')
+          .carousel-caption.d-none.d-md-block
+            h5=top[1].postName
+            p=top[1].postDescription
+        .carousel-item
+          img.d-block.w-100(src='/uploads/' + top[2].postImage, alt='...')
+          .carousel-caption.d-none.d-md-block
+            h5=top[1].postName
+            p=top[1].postDescription
+      button.carousel-control-prev(type='button', data-target='#carouselExampleCaptions', data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+      button.carousel-control-next(type='button', data-target='#carouselExampleCaptions', data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
   section.call-to-action
     .container
       .row
@@ -8,11 +38,11 @@ block content
           .main-content
             .row
               .col-lg-8
-                span Stand Blog HTML5 Template
-                h4 Creative HTML Template For Bloggers!
+                span Subscribe
+                h4 For more delicious recipes !!!
               .col-lg-4
                 .main-button
-                  a(rel='nofollow' href='https://templatemo.com/tm-551-stand-blog' target='_parent') Subscribe Now!
+                  a(href='/subscribe/'+ session.userId target='_parent') Subscribe Now!
   section.blog-posts
     .container
       .row
@@ -33,8 +63,6 @@ block content
                           a(href='#') Admin
                         li
                           a=item.createdDate.toString().slice(4,15)
-                        li
-                          a(href='#') 12 Comments
                       p=item.postDescription
                       .post-options
                         .row
@@ -55,41 +83,39 @@ block content
                                 a(href='#')  Twitter
               .col-lg-12
                 .main-button
-                  a(href='blog.html') View All Posts
+                  a(href='/posts') View All Posts
         .col-lg-4
           .sidebar
             .row
               .col-lg-12
                 .sidebar-item.search
-                  form#search_form(name='gs' method='GET' action='#')
-                    input.searchText(type='text' name='q' placeholder='type to search...' autocomplete='on')
+                  form#search_form( method='POST' action='/search/')
+                    .row
+                      .col-10
+                        input.searchText(type='text' name='input' placeholder='type to search post' autocomplete='on')
+                      .col-2                          
+                        button.search-button(href='/subscribe/'+ session.userId target='_parent') 
+                          i.bi.bi-search 
               .col-lg-12
-                .sidebar-item.recent-posts
-                  .sidebar-heading
-                    h2 Recent Posts
-                  .content
-                    ul
-                      li
-                        a(href='post-details.html')
-                          h5 Vestibulum id turpis porttitor sapien facilisis scelerisque
-                          span May 31, 2020
-                      li
-                        a(href='post-details.html')
-                          h5 Suspendisse et metus nec libero ultrices varius eget in risus
-                          span May 28, 2020
-                      li
-                        a(href='post-details.html')
-                          h5 Swag hella echo park leggings, shaman cornhole ethical coloring
-                          span May 14, 2020
+                  .sidebar-item.recent-posts
+                    .sidebar-heading
+                      h2 Recent Posts
+                    .content
+                      ul
+                        each item in dataAll
+                          li
+                            a(href='/blog/detail/' + item.postId)
+                              h5=item.postName
+                              span=item.createdDate.toString().slice(4,15)
               .col-lg-12
-                .sidebar-item.categories
+                .sidebar-item.tags
                   .sidebar-heading
                     h2 Categories
                   .content
                     ul
                       each item in dataCate
                         li
-                          a(href='/category/'+ item.categoryId)='- '+item.categoryName
+                          a(href='/category/'+ item.categoryId)=item.categoryName
               .col-lg-12
                 .sidebar-item.tags
                   .sidebar-heading

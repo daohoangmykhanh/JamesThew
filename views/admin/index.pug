@@ -9,11 +9,11 @@ block content
                 // small box
                 .small-box.bg-info
                   .inner
-                    h3 150
-                    p New Orders
+                    h3=rowsSub[0].count
+                    p Subscribe
                   .icon
                     i.ion.ion-bag
-                  a.small-box-footer(href='#')
+                  a.small-box-footer(href='/admin/subscribe/index')
                     | More info 
                     i.fas.fa-arrow-circle-right
               // ./col
@@ -21,13 +21,11 @@ block content
                 // small box
                 .small-box.bg-success
                   .inner
-                    h3
-                      | 53
-                      sup(style='font-size: 20px') %
-                    p Bounce Rate
+                    h3=rowsPost[0].count
+                    p Posts
                   .icon
                     i.ion.ion-stats-bars
-                  a.small-box-footer(href='#')
+                  a.small-box-footer(href='/admin/post/index')
                     | More info 
                     i.fas.fa-arrow-circle-right
               // ./col
@@ -35,11 +33,11 @@ block content
                 // small box
                 .small-box.bg-warning
                   .inner
-                    h3 44
+                    h3=rowsUser[0].count
                     p User Registrations
                   .icon
                     i.ion.ion-person-add
-                  a.small-box-footer(href='#')
+                  a.small-box-footer(href='/admin/user/index')
                     | More info 
                     i.fas.fa-arrow-circle-right
               // ./col
@@ -47,11 +45,11 @@ block content
                 // small box
                 .small-box.bg-danger
                   .inner
-                    h3 65
-                    p Unique Visitors
+                    h3=rowsContact[0].count
+                    p Contact
                   .icon
                     i.ion.ion-pie-graph
-                  a.small-box-footer(href='#')
+                  a.small-box-footer(href='/admin/contact/index')
                     | More info 
                     i.fas.fa-arrow-circle-right
     

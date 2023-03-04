@@ -15,17 +15,17 @@ block content
               th(style='width: 50px') #
               th User's email
               th Subscribe's name
-              th(style='width: 75px') Edit
-              th(style='width: 75px') Delete
+              th Payment 
+              th Price
+              th Created Date
           tbody
-            tr
-              each item in data
+            each item in data
+              tr
                 td=item.subscribeId
-                td=item.userId
+                td=item.userEmail
                 td=item.subscribeName
-                td
-                    span.badge.bg-warning Edit
-                td
-                    span.badge.bg-danger Delete
+                td=item.subscribePayment
+                td=item.subscribePrice
+                td=item.createdDate.toString().slice(4,15)
             
     

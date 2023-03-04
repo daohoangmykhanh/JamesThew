@@ -9,16 +9,24 @@ var adminRouter = require('./routes/admin');
 const session = require('express-session');
 var app = express();
 
-app.use(session({
-    secret: "your_secret_key",
-    saveUninitialized:true,
-    cookie: { maxAge: 60000 },
-    resave: false 
-}));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+app.use(session({
+    secret: "1234567890QWERTY",
+    saveUninitialized:true,
+    cookie: { maxAge: 3600000 },
+    resave: true 
+}));
+app.use(function(req,res,next){
+  res.locals.session = req.session;
+  next();
+})
+
+
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -6,7 +6,7 @@ module.exports = class post{
     statusId= 1;
     content = '';
     createdDate = '';
-    constructor( userId = 1, statusId = 1, postId = 1, createdDate = '', content = ''){
+    constructor( userId = 1, postId = 1,statusId = 1, content = '',  createdDate = ''){
         this.userId = userId;
         this.statusId = statusId;
         this.postId = postId;

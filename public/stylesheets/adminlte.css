@@ -24,7 +24,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  --primary: #f48840;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -2581,15 +2581,15 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #f48840;
+  border-color: #f48840;
   box-shadow: none;
 }
 
 .btn-primary:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  color: #f48840;
+  background-color: white;
+  border-color: #f48840;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -4343,7 +4343,7 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #fff;
+  background-color: #f48840;
   border-color: #dee2e6 #dee2e6 #fff;
 }
 
@@ -4360,7 +4360,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: #f48840;
 }
 
 .nav-fill > .nav-link,
@@ -26650,7 +26650,7 @@ body.text-sm .input-group-text {
 }
 
 .card-primary:not(.card-outline) > .card-header {
-  background-color: #007bff;
+  background-color: #f48840;
 }
 
 .card-primary:not(.card-outline) > .card-header,
@@ -26672,7 +26672,7 @@ body.text-sm .input-group-text {
 
 .card-primary.card-outline-tabs > .card-header a.active,
 .card-primary.card-outline-tabs > .card-header a.active:hover {
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #f48840;
 }
 
 .bg-primary > .card-header .btn-tool,
@@ -26704,7 +26704,7 @@ body.text-sm .input-group-text {
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.hour:hover,
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.minute:hover,
 .card.bg-gradient-primary .bootstrap-datetimepicker-widget table td.second:hover {
-  background-color: #0067d6;
+  background-color: #f48840;
   color: #fff;
 }
 

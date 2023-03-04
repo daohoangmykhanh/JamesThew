@@ -99,4 +99,38 @@ module.exports = class UserDao {
         
         })
     }
+    Profile(id, item){
+        var db = new DbConnect();
+        var config = db.getConnect();
+        var con = mysql.createConnection(config);
+        let query;
+        con.connect(function (err) {
+            if (err) console.log(err)
+            console.log("Connect!")
+            if (item.get_password() == null) {
+                query = "UPDATE tblUser SET userName = '"+ item.get_name() +"', userEmail = '" + item.get_email() +"' WHERE userId = "+ id +""
+            } else {
+                query = "UPDATE tblUser SET userName = '"+ item.get_name() +"', userEmail = '" + item.get_email() +"', userPassword = '" + item.get_password()+ "' WHERE userId = "+ id +""
+            }
+            con.query(query, function (err) {
+                if (err) throw console.log(err)
+                console.log('Execute successfully!!!');
+            });
+        
+        })
+    }
+    Count(callback){
+        var db = new DbConnect();
+        var config = db.getConnect();
+        var con = mysql.createConnection(config);
+        con.connect(function (err) {
+            if (err) throw console.log(err);
+            console.log("Connect!")
+            let query = 'SELECT COUNT(*) as count FROM tblUser';
+            con.query(query, function (err, data) {
+                if (err) throw console.log(err)
+                callback(null, data)
+            });
+        });
+    }
 }

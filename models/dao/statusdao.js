@@ -8,7 +8,7 @@ module.exports = class CommentDao {
         var db = new DbConnect();
         var config = db.getConnect();
         var con = mysql.createConnection(config);
-        con.connect(config, function (err) {
+        con.connect( function (err) {
             if (err) console.log(err);
             let query = 'SELECT * FROM tblStatus';
             con.query(query, function (err, data) {

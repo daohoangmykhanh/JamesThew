@@ -9,7 +9,8 @@ module.exports = class post{
     updatedDate = '';
     content = '';
     description ='';
-    constructor( name = '',image = '',description ='', content = '', tagId = 1, categoryId = 1, createdDate = '', updatedDate = ''){
+    subscribe = false;
+    constructor( name = '',image = '',description ='', content = '', tagId = 1, categoryId = 1, subscribe = false,createdDate = '',  updatedDate = ''){
         this.name = name;
         this.tagId = tagId;
         this.categoryId = categoryId;
@@ -17,7 +18,8 @@ module.exports = class post{
         this.updatedDate = updatedDate;
         this.content = content;
         this.image = image;
-        this.description = description
+        this.description = description;
+        this.subscribe = subscribe
     }
     get_id = () => { return this.id; }
     set_id = (val) => { this.id = val; }
@@ -37,4 +39,6 @@ module.exports = class post{
     set_image = (val) => { this.image = val; }
     get_description = () => { return this.description; }
     set_description = (val) => { this.description = val; }
+    get_subscribe = () => { return this.subscribe; }
+    set_subscribe = (val) => { this.subscribe = val; }
 }

@@ -1,0 +1,68 @@
+extends layout
+
+block content
+    .heading-page.header-text
+      section.page-heading
+        .container
+          .row
+            .col-lg-12
+              .text-content
+                h4 profile
+                h2 Edit your profile
+    // Banner Ends Here
+    section.contact-us
+      .container
+        .row
+          .col-lg-12
+            .down-contact
+              .row
+                .col-lg-8
+                  .sidebar-item.contact-form
+                    .sidebar-heading
+                      h2 Your information
+                    .content
+                        #myTabContent.tab-content
+                            #home.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='home-tab') 
+                                form#contact(action='/profile/'+ data[0].userId, method='post')
+                                    .row
+                                    .col-md-12.col-sm-12
+                                        fieldset
+                                        input#name(name='name', type='text', placeholder='Your name', value=""+ data[0].userName +"")
+                                    .col-md-12.col-sm-12
+                                        fieldset
+                                        input#email(name='email', type='text', placeholder='Your email', value=""+ data[0].userEmail +"" )
+                                    .col-md-12.col-sm-12
+                                        fieldset
+                                        input#subject(name='password', type='password', placeholder='Password')
+                                    .col-lg-12
+                                        fieldset
+                                        button#form-submit.main-button(type='submit') Submit
+
+                            #profile.tab-pane.fade(role='tabpanel', aria-labelledby='profile-tab') 
+                                table.table
+                                    thead.thead-dark
+                                        tr
+                                            th(scope='col') #
+                                            th(scope='col') Name
+                                            th(scope='col') Payment
+                                            th(scope='col') Created Date
+                                    tbody
+                                        tr
+                                            th(scope='row') 1
+                                            td Mark
+                                            td Otto
+                                            td @mdo
+                                        
+    
+                .col-lg-4
+                  .sidebar-item.contact-information
+                    .sidebar-heading
+                      h2 
+                    .content
+                       ul#myTab.nav.nav-tabs(role='tablist')
+                        li
+                          button#home-tab.nav-link.active(data-toggle='tab', data-target='#home', type='button', role='tab', aria-controls='home', aria-selected='true') Account
+                        li
+                          button#profile-tab.nav-link(data-toggle='tab', data-target='#profile', type='button', role='tab', aria-controls='profile', aria-selected='false') Subscribe
+         
+          

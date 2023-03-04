@@ -17,7 +17,7 @@ html(lang='en')
     // JQVMap
     link(rel='stylesheet', href='/plugins/jqvmap/jqvmap.min.css')
     // Theme style
-    link(rel='stylesheet', href='/stylesheets/adminlte.min.css')
+    link(rel='stylesheet', href='/stylesheets/adminlte.css')
     // overlayScrollbars
     link(rel='stylesheet', href='/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')
     // Daterange picker
@@ -36,10 +36,6 @@ html(lang='en')
           li.nav-item
             a.nav-link(data-widget='pushmenu', href='#', role='button')
               i.fas.fa-bars
-          li.nav-item.d-none.d-sm-inline-block
-            a.nav-link(href='index3.html') Home
-          li.nav-item.d-none.d-sm-inline-block
-            a.nav-link(href='#') Contact
         // Right navbar links
         ul.navbar-nav.ml-auto
           // Navbar Search
@@ -64,13 +60,15 @@ html(lang='en')
         // Brand Logo
         a.brand-link(href='index3.html')
           img.brand-image.img-circle.elevation-3(src='/images/AdminLTELogo.png', alt='AdminLTE Logo', style='opacity: .8')
-          span.brand-text.font-weight-light JamesThew Admin
+          span.brand-text.font-weight-light Admin
         // Sidebar
         .sidebar
           // Sidebar user panel (optional)
           .user-panel.mt-3.pb-3.mb-3.d-flex
-            .info
-              a.d-block(href='#') Alexander Pierce
+            .info.row
+              a.mr-2(href='/admin/user/update/' + session.userId)=session.userName 
+              span(style='color:white')  |              
+              a.ml-2(href='/logout') Logout
           // Sidebar Menu
           nav.mt-2
             ul.nav.nav-pills.nav-sidebar.flex-column(data-widget='treeview', role='menu', data-accordion='false')
@@ -79,34 +77,32 @@ html(lang='en')
                 with font-awesome or any other icon font library
               li.nav-item
                 a.nav-link(href='/admin')
-                  i.nav-icon.fas.fa-th
                   p
                     | Dashboard
               li.nav-item
-                a.nav-link(href='admin/user/index')
-                  i.nav-icon.fas.fa-th
+                a.nav-link(href='/admin/user/index')
                   p
                     | User
               li.nav-item
                 a.nav-link(href='/admin/category/index')
-                  i.nav-icon.fas.fa-th
                   p
                     | Category
               li.nav-item
-                a.nav-link.active(href='/admin/post/index')
-                  i.nav-icon.fas.fa-th
+                a.nav-link(href='/admin/post/index')
                   p
                     | Post
               li.nav-item
                 a.nav-link(href='/admin/comment/index')
-                  i.nav-icon.fas.fa-th
                   p
                     | Comment
               li.nav-item
-                a.nav-link(href='/admin/subscribe/index')
-                  i.nav-icon.fas.fa-th
+                a.nav-link.active(href='/admin/subscribe/index', style='background-color: #f48840')
                   p
                     | Subscribe
+              li.nav-item
+                a.nav-link(href='/admin/contact/index')
+                  p
+                    | Contact     
           // /.sidebar-menu
         // /.sidebar
       // Content Wrapper. Contains page content
@@ -118,11 +114,6 @@ html(lang='en')
               .col-sm-6
                 h1=title
               // /.col
-              .col-sm-6
-                ol.breadcrumb.float-sm-right
-                  li.breadcrumb-item
-                    a(href='#') Home
-                  li.breadcrumb-item.active Dashboard v1
               // /.col
             // /.row
           // /.container-fluid

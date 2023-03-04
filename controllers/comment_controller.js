@@ -9,11 +9,14 @@ module.exports = class comment_controller {
         });
     }
     createComment(req,res,next){
+        var id = req.params.id;
+        var userId = req.session.userId
         let currentDate = new Date().toJSON().slice(0, 10);
         var dao = new CommentDao();
-        var com = new comment(req.body.userId,req.body.postId,req.body.statusId,req.body.content,currentDate);
+        var com = new comment(userId,id,req.body.status,req.body.content,currentDate);
         dao.Create(com,(err) => {
             if (err) throw  console.log(err)
         });
+        res.redirect('back')
     }
 }

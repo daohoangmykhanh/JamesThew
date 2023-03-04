@@ -1,0 +1,17 @@
+extends layout
+
+block content 
+    section.content-header
+      .container-fluid
+        .row.mb-1.ml-5
+          h1 Tag
+    .card.card-primary.m-5
+      .card-header
+        h3.card-title Create a new tag
+      form(action="/admin/tag/create" method="POST")
+        .card-body
+          .form-group
+            label(for='name') Tag's name
+            input#name.form-control(type='text', placeholder='Enter name', name='name')
+        .card-footer
+          button.btn.btn-primary(type='submit') Submit

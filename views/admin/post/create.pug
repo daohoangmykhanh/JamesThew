@@ -24,6 +24,12 @@ block content
             label(for='content') Content
               textarea#content.form-control(type='text', name='content', rows='10')
           .form-group
+            label 
+              input.mr-4#non(type='radio', name='subscribe', value=1,  style="width: 10px")
+              label(for='non' , style="margin-top: 12px; font-weight:bold") Non-subscribed
+              input.mr-4#sub(type='radio', name='subscribe', value=0, style="width: 20px;margin-left: 15px")
+              label(for='sub' , style="margin-top: 12px; font-weight:bold") Subscribed
+          .form-group
             label Tag 
               select.form-control.mt-2(name='tagId')
                 each item in dataTag

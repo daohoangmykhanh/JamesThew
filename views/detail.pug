@@ -21,7 +21,7 @@ block content
                   h4 Creative HTML Template For Bloggers!
                 .col-lg-4
                   .main-button
-                    a(rel='nofollow', href='https://templatemo.com/tm-551-stand-blog', target='_parent') Download Now!
+                    a(href='/subscribe', target='_parent') Subscribe Now!
     section.blog-posts.grid-system
       .container
         .row
@@ -34,17 +34,15 @@ block content
                       img(src='/uploads/'+dataPost[0].postImage alt='' style='height:600px')
                     .down-content
                       span=dataPost[0].tagName
-                      a(href='post-details.html')
+                      a(href='/blog/detail/' + dataPost[0].postId)
                         h4=dataPost[0].postName
                       ul.post-info
                         li
                           a(href='#') James Thew
                         li
                           a=dataPost[0].createdDate.toString().slice(4,15)
-                        li
-                          a(href='#') 10 Comments
                       p=dataPost[0].postDescription
-                      p=dataPost[0].postContent
+                      p !{dataPost[0].postContent}
                       .post-options
                         .row
                           .col-6
@@ -65,61 +63,32 @@ block content
                 .col-lg-12
                   .sidebar-item.comments
                     .sidebar-heading
-                      h2 4 comments
+                      h2 #{count[0].count} comments
                     .content
                       ul
-                        li
-                          .author-thumb
-                            img(src='assets/images/comment-author-01.jpg', alt='')
-                          .right-content
-                            h4
-                              | Charles Kate
-                              span May 16, 2020
-                            p
-                              | Fusce ornare mollis eros. Duis et diam vitae justo fringilla condimentum eu quis leo. Vestibulum id turpis porttitor sapien facilisis scelerisque. Curabitur a nisl eu lacus convallis eleifend posuere id tellus.
-                        li.replied
-                          .author-thumb
-                            img(src='assets/images/comment-author-02.jpg', alt='')
-                          .right-content
-                            h4
-                              | Thirteen Man
-                              span May 20, 2020
-                            p
-                              | In porta urna sed venenatis sollicitudin. Praesent urna sem, pulvinar vel mattis eget.
-                        li
-                          .author-thumb
-                            img(src='assets/images/comment-author-03.jpg', alt='')
-                          .right-content
-                            h4
-                              | Belisimo Mama
-                              span May 16, 2020
-                            p
-                              | Nullam nec pharetra nibh. Cras tortor nulla, faucibus id tincidunt in, ultrices eget ligula. Sed vitae suscipit ligula. Vestibulum id turpis volutpat, lobortis turpis ac, molestie nibh.
-                        li.replied
-                          .author-thumb
-                            img(src='assets/images/comment-author-02.jpg', alt='')
-                          .right-content
-                            h4
-                              | Thirteen Man
-                              span May 22, 2020
-                            p
-                              | Mauris sit amet justo vulputate, cursus massa congue, vestibulum odio. Aenean elit nunc, gravida in erat sit amet, feugiat viverra leo.
+                        each item in rows
+                          li
+                            .right-content
+                              h4.mb-2=item.userName
+                                span(style="color: #f48840; font-weight:bold")=item.statusName
+                                span=item.createdDate.toString().slice(4,15)
+                              p=item.commentContent
                 .col-lg-12
                   .sidebar-item.submit-comment
                     .sidebar-heading
                       h2 Your comment
                     .content
-                      form#comment(action='#', method='post')
+                      form#comment(action='/comment/'+ dataPost[0].postId, method='post')
                         .row
-                          .col-md-6.col-sm-12
-                            fieldset
-                              input#name(name='name', type='text', placeholder='Your name', required='')
-                          .col-md-6.col-sm-12
-                            fieldset
-                              input#email(name='email', type='text', placeholder='Your email', required='')
                           .col-lg-12
                             fieldset
-                              textarea#message(name='message', rows='6', placeholder='Type your comment', required='')
+                              textarea#message(name='content', rows='6', placeholder='Type your comment')
+                          .col-md-12
+                              .row.ml-5
+                                each status in dataStat
+                                  .col-md-3.row
+                                    input.mr-4#1(type='radio', name='status', value=status.statusId, style="width: 20px")
+                                    label(style="margin-top: 12px; font-weight:bold")=status.statusName
                           .col-lg-12
                             fieldset
                               button#form-submit.main-button(type='submit') Submit
@@ -136,27 +105,20 @@ block content
                       h2 Recent Posts
                     .content
                       ul
-                        li
-                          a(href='post-details.html')
-                            h5 Vestibulum id turpis porttitor sapien facilisis scelerisque
-                            span May 31, 2020
-                        li
-                          a(href='post-details.html')
-                            h5 Suspendisse et metus nec libero ultrices varius eget in risus
-                            span May 28, 2020
-                        li
-                          a(href='post-details.html')
-                            h5 Swag hella echo park leggings, shaman cornhole ethical coloring
-                            span May 14, 2020
+                        each item in dataAll
+                          li
+                            a(href='/blog/detail/' + item.postId)
+                              h5=item.postName
+                              span=item.createdDate.toString().slice(4,15)
                 .col-lg-12
-                  .sidebar-item.categories
+                  .sidebar-item.tags
                     .sidebar-heading
                       h2 Categories
                     .content
                       ul
                         each item in dataCate
                           li
-                            a(href='/category/'+ item.categoryId)='- '+item.categoryName
+                            a(href='/category/'+ item.categoryId)=item.categoryName
                 .col-lg-12
                   .sidebar-item.tags
                     .sidebar-heading

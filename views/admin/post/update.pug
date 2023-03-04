@@ -28,6 +28,18 @@ block content
             label(for='content') Content
             textarea#content.form-control(type='text', name='content')=dataPost[0].postContent 
           .form-group
+            label
+              if dataPost[0].postSubscribe == 0
+                input.mr-4#non(checked, type='radio', name='subscribe', value=1,  style="width: 10px")
+                label(for='non' , style="margin-top: 12px; font-weight:bold") Non-subscribed
+                input.mr-4#sub(type='radio', name='subscribe', value=0, style="width: 20px;margin-left: 15px")
+                label(for='sub' , style="margin-top: 12px; font-weight:bold") Subscribed
+              else 
+                input.mr-4#non(type='radio', name='subscribe', value=1,  style="width: 10px")
+                label(for='non' , style="margin-top: 12px; font-weight:bold") Non-subscribed
+                input.mr-4#sub(checked, type='radio', name='subscribe', value=0, style="width: 20px;margin-left: 15px")
+                label(for='sub' , style="margin-top: 12px; font-weight:bold") Subscribed
+          .form-group
             label Tag 
               select.form-control.mt-2(name='tagId')
                 each item in dataTag

@@ -1,0 +1,25 @@
+extends layout
+
+block content 
+    section.content-header.ml-5
+    .card.ml-5.mr-5.mt-2
+      .card-header
+        h3.card-title Contact List
+      .card-body
+        table.table.table-bordered
+          thead
+            tr
+              th(style='width: 50px') #
+              th Name
+              th Email
+              th Subject
+              th Message
+          tbody
+            each item in data
+              tr
+                td=item.contactId
+                td=item.contactName
+                td=item.contactEmail
+                td=item.contactSubject
+                td=item.contactMessage
+    

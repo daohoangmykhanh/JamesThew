@@ -11,14 +11,15 @@ html
   body
  
   // Header
-.container.mb-2
-  .d-flex.col-12.justify-content-end
-    if (userName)
-      a.text-warning.font-weight-bold.mr-2(href='/login')="Welcome" + `${userName}`
-      a.text-warning.font-weight-bold(href='/logout') Logout
-    else
-      a.text-warning.font-weight-bold.mr-2(href='/login') Login 
-      a.text-warning.font-weight-bold(href='/register') Register
+.header(style="background-color:#1e1e1e ")
+  .container.pb-2
+    .d-flex.col-12.justify-content-end
+      if session.loginIs
+        a.font-weight-bold.mr-5.mt-2(href='/profile/'+ session.userId, style="color:#f48840") Welcome back #{session.userName} !
+        a.font-weight-bold.mt-2.mr-5(href='/logout', style="color:#f48840") Logout
+      else
+        a.font-weight-bold.mr-5.mt-2(href='/login', style="color:#f48840") Login
+        a.font-weight-bold.mt-2.mr-5(href='/register', style="color:#f48840") Register
 header
   nav.navbar.navbar-expand-lg
     .container
@@ -37,7 +38,7 @@ header
           li.nav-item
             a.nav-link(href='/recipes') Recipes
           li.nav-item
-            a.nav-link(href='/posts') Blog
+            a.nav-link(href='/post-sub') Subscribe
           li.nav-item
             a.nav-link(href='/about') About
           li.nav-item
